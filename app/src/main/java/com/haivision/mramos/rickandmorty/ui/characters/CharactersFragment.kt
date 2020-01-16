@@ -23,8 +23,8 @@ class CharactersFragment : Fragment() {
                 ViewModelProviders.of(this).get(CharactersViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_characters, container, false)
         val textView: TextView = root.findViewById(R.id.text_characters)
-        viewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        viewModel.characters.observe(viewLifecycleOwner, Observer {
+            textView.text = it.joinToString { it.name }
         })
         return root
     }

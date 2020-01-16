@@ -6,8 +6,12 @@ import androidx.lifecycle.ViewModel
 
 class CharactersViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is characters Fragment"
+    private val _characters = MutableLiveData<List<Character>>().apply {
+        value = getCharacters()
     }
-    val text: LiveData<String> = _text
+    val characters: LiveData<List<Character>> = _characters
+
+    private fun getCharacters(): List<Character> {
+        return STATIC_CHARACTERS
+    }
 }
