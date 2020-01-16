@@ -1,4 +1,4 @@
-package com.haivision.mramos.rickandmorty.ui.notifications
+package com.haivision.mramos.rickandmorty.ui.episodes
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
