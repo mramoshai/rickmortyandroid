@@ -1,4 +1,4 @@
-package com.haivision.mramos.rickandmorty.ui.home
+package com.haivision.mramos.rickandmorty.ui.locations
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,36 +8,24 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.NavHostFragment
 import com.haivision.mramos.rickandmorty.R
 
-class HomeFragment : Fragment() {
+class LocationsFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var locationsViewModel: LocationsViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        locationsViewModel =
+                ViewModelProviders.of(this).get(LocationsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_locations, container, false)
+        val textView: TextView = root.findViewById(R.id.text_locations)
+        locationsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        view.findViewById<View>(R.id.button_home).setOnClickListener {
-            val action = HomeFragmentDirections
-                    .actionHomeFragmentToHomeSecondFragment("From HomeFragment")
-            NavHostFragment.findNavController(this@HomeFragment)
-                    .navigate(action)
-        }
     }
 }

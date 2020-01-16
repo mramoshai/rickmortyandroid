@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.haivision.mramos.rickandmorty.R
 
-class NotificationsFragment : Fragment() {
+class EpisodesFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+    private lateinit var episodesViewModel: EpisodesViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(NotificationsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_notifications, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
+        episodesViewModel =
+                ViewModelProviders.of(this).get(EpisodesViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_episodes, container, false)
+        val textView: TextView = root.findViewById(R.id.text_episodes)
+        episodesViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

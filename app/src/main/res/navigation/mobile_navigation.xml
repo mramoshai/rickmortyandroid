@@ -3,41 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_characters">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.haivision.mramos.rickandmorty.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home">
-
-        <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/navigation_home_second" />
-    </fragment>
-    <fragment
-        android:id="@+id/navigation_home_second"
-        android:name="com.haivision.mramos.rickandmorty.ui.home.HomeSecondFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
-        <action
-            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/navigation_home" />
-
-        <argument
-            android:name="myArg"
-            app:argType="string" />
-    </fragment>
+        android:id="@+id/navigation_locations"
+        android:name="com.haivision.mramos.rickandmorty.ui.locations.LocationsFragment"
+        android:label="@string/title_locations"
+        tools:layout="@layout/fragment_locations" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.haivision.mramos.rickandmorty.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_characters"
+        android:name="com.haivision.mramos.rickandmorty.ui.characters.CharactersFragment"
+        android:label="@string/title_characters"
+        tools:layout="@layout/fragment_characters" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.haivision.mramos.rickandmorty.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_episodes"
+        android:name="com.haivision.mramos.rickandmorty.ui.episodes.EpisodesFragment"
+        android:label="@string/title_episodes"
+        tools:layout="@layout/fragment_episodes" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.haivision.mramos.rickandmorty.ui.dashboard
+package com.haivision.mramos.rickandmorty.ui.characters
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.haivision.mramos.rickandmorty.R
 
-class DashboardFragment : Fragment() {
+class CharactersFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var viewModel: CharactersViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+        viewModel =
+                ViewModelProviders.of(this).get(CharactersViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_characters, container, false)
+        val textView: TextView = root.findViewById(R.id.text_characters)
+        viewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

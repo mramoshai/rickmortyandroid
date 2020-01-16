@@ -1,13 +1,6 @@
 <resources>
     <string name="app_name">Rick and Morty</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="hello_home_second">Hello HomeSecondFragment. Arg: %1$s</string>
-    <string name="hello_dashboard_second">Hello DashboardSecondFragment. Arg: %1$s</string>
-    <string name="hello_notifications_second">Hello NotificationsSecondFragment. Arg: %1$s</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-
-    <string name="home_second">Home Second</string>
+    <string name="title_locations">Locations</string>
+    <string name="title_characters">Characters</string>
+    <string name="title_episodes">Episodes</string>
 </resources>
