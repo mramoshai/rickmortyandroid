@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.haivision.mramos.rickandmorty.R
 import com.haivision.mramos.rickandmorty.inflate
+import com.haivision.mramos.rickandmorty.loadUrl
 import kotlinx.android.synthetic.main.item_character.view.*
 
 class CharacterAdapter(private val characters: List<Character>) :
@@ -13,6 +14,11 @@ class CharacterAdapter(private val characters: List<Character>) :
     class CharacterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(character: Character) = with(itemView) {
             character_name.text = character.name
+            character_species.text = when {
+                character.type.isNotEmpty() -> "${character.species} - ${character.type}"
+                else -> character.species
+            }
+            character_img.loadUrl(character.image)
         }
     }
 
