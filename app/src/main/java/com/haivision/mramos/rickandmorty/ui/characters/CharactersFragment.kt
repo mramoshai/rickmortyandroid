@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.haivision.mramos.rickandmorty.R
+import com.haivision.mramos.rickandmorty.doOnLastItem
 
 class CharactersFragment : Fragment() {
 
@@ -47,5 +48,6 @@ class CharactersFragment : Fragment() {
             layoutManager = viewManager
             adapter = viewAdapter
         }
+        recyclerView.doOnLastItem(viewModel::loadCharacters)
     }
 }
