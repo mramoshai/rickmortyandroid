@@ -17,6 +17,7 @@ class CharactersFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
+    private val characters = mutableListOf<Character>()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -33,12 +34,15 @@ class CharactersFragment : Fragment() {
     }
 
     private fun processCharacters(it: List<Character>) {
-        if (it.isNotEmpty()) recyclerView.adapter = CharacterAdapter(it)
+        if (it.isNotEmpty()){
+            characters.addAll(it)
+            viewAdapter.notifyDataSetChanged()
+        }
     }
 
     private fun setUpRecyclerView(root: View) {
         viewManager = LinearLayoutManager(context)
-        viewAdapter = CharacterAdapter(listOf())
+        viewAdapter = CharacterAdapter(characters)
         recyclerView = root.findViewById<RecyclerView>(R.id.characters_recycler_view).apply {
             layoutManager = viewManager
             adapter = viewAdapter
