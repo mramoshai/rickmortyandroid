@@ -10,7 +10,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.haivision.mramos.rickandmorty.R
-import com.haivision.mramos.rickandmorty.doOnLastItem
+import com.haivision.mramos.rickandmorty.api.MyResult
+import com.haivision.mramos.rickandmorty.onEndScroll
 
 class CharactersFragment : Fragment() {
 
@@ -21,24 +22,26 @@ class CharactersFragment : Fragment() {
     private val characters = mutableListOf<Character>()
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProviders.of(this).get(CharactersViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_characters, container, false)
 
         setUpRecyclerView(root)
-        viewModel.loadCharacters()
-        viewModel.characters.observe(viewLifecycleOwner, Observer(this::processCharacters))
+        viewModel.loadMoreCharacters()
+        viewModel.moreCharacters.observe(viewLifecycleOwner, Observer(this::processMoreCharacters))
         return root
     }
 
-    private fun processCharacters(it: List<Character>) {
-        if (it.isNotEmpty()){
-            characters.addAll(it)
-            viewAdapter.notifyDataSetChanged()
-        }
+    private fun processMoreCharacters(result: MyResult<List<Character>>) {
+        if (result is MyResult.Success) addCharacters(result.data)
+    }
+
+    private fun addCharacters(moreCharacters: List<Character>) {
+        characters.addAll(moreCharacters)
+        viewAdapter.notifyDataSetChanged()
     }
 
     private fun setUpRecyclerView(root: View) {
@@ -48,6 +51,6 @@ class CharactersFragment : Fragment() {
             layoutManager = viewManager
             adapter = viewAdapter
         }
-        recyclerView.doOnLastItem(viewModel::loadCharacters)
+        recyclerView.onEndScroll(viewModel::loadMoreCharacters)
     }
 }
