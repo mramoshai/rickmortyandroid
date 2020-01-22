@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.haivision.mramos.rickandmorty.R
 import com.haivision.mramos.rickandmorty.api.MyResult
+import com.haivision.mramos.rickandmorty.api.MyResult.Success
 import com.haivision.mramos.rickandmorty.onEndScroll
 
 class CharactersFragment : Fragment() {
@@ -36,7 +37,7 @@ class CharactersFragment : Fragment() {
     }
 
     private fun processMoreCharacters(result: MyResult<List<Character>>) {
-        if (result is MyResult.Success) addCharacters(result.data)
+        if (result is Success) addCharacters(result.data)
     }
 
     private fun addCharacters(moreCharacters: List<Character>) {
