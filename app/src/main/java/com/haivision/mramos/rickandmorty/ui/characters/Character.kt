@@ -17,6 +17,7 @@ data class Character(
     val created: Date
 )
 
+// TODO does not work
 enum class Status (val status: String) {
     ALIVE("Alive"),
     DEAD("Dead"),

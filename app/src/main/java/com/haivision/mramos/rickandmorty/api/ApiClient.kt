@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
     private var BASE_URL: String = "https://rickandmortyapi.com/api/"
-    val getClient: ApiInterface
+    val client: ApiInterface
         get() {
             val gson = GsonBuilder()
                 .setLenient()

@@ -13,7 +13,7 @@ class CharactersViewModel : ViewModel() {
 
     private val _characters = MutableLiveData<MyResult<List<Character>>>()
     val moreCharacters: LiveData<MyResult<List<Character>>> = _characters
-    private val client = ApiClient.getClient
+    private val client = ApiClient.client
     private var page = 1
     fun loadMoreCharacters() {
         viewModelScope.launch {
