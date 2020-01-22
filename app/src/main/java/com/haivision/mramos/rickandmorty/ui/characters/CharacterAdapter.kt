@@ -19,6 +19,7 @@ class CharacterAdapter(private val characters: List<Character>) :
                 else -> character.species
             }
             character_img.loadUrl(character.image)
+            character_origin.text = character.origin.name
         }
     }
 
