@@ -15,10 +15,15 @@ class CharactersViewModel : ViewModel() {
     val moreCharacters: LiveData<MyResult<List<Character>>> = _characters
     private val client = ApiClient.client
     private var page = 1
+    private var pages = Int.MAX_VALUE
     fun loadMoreCharacters() {
+        if (page <= pages)
         viewModelScope.launch {
             _characters.value = try {
-                MyResult.Success(client.getCharacters(page++).results)
+                with(client.getCharacters(page++)) {
+                    pages = info.pages
+                    MyResult.Success(results)
+                }
             } catch (e: Throwable) {
                 Log.e("GET CHARACTERS", e.toString())
                 MyResult.Failure(e)

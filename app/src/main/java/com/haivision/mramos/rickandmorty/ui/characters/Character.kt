@@ -17,7 +17,7 @@ data class Character(
     val created: Date
 )
 
-// TODO does not work
+// todo enums dont get parsed from api
 enum class Status (val status: String) {
     ALIVE("Alive"),
     DEAD("Dead"),
