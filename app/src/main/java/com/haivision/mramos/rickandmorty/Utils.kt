@@ -7,14 +7,10 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-fun String.getIdFromUrl() = this.split("/").last()
-
 fun ViewGroup.inflate(layoutRes: Int): View =
         LayoutInflater.from(context).inflate(layoutRes, this, false)
 
-fun ImageView.loadUrl(url: String) {
-    Picasso.get().load(url).into(this)
-}
+fun ImageView.loadUrl(url: String) = Picasso.get().load(url).into(this)
 
 fun RecyclerView.isLastItemFullyVisible(): Boolean {
     val items = layoutManager?.itemCount
